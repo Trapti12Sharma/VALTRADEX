@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   FaBars,
   FaTimes,
@@ -25,19 +25,72 @@ import {
   FaHandHoldingUsd,
   FaLeaf,
 } from "react-icons/fa";
-import logo from "../../assets/logo.jpeg";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.jpeg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [isNavItemHovered, setIsNavItemHovered] = useState(false);
+  const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+  const [persistDropdown, setPersistDropdown] = useState(false);
+  const closeTimeoutRef = useRef(null);
 
-  // Scroll shadow effect
+  // ref to the currently rendered dropdown (if any)
+  const dropdownRef = useRef(null);
+
+  // scroll shadow
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // mobile body lock
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  // close dropdown when both not hovered (with small delay) — respect persistDropdown
+  useEffect(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+
+    if (!isNavItemHovered && !isDropdownHovered && !persistDropdown) {
+      closeTimeoutRef.current = setTimeout(() => {
+        setOpenDropdown(null);
+      }, 100);
+    }
+
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+        closeTimeoutRef.current = null;
+      }
+    };
+  }, [isNavItemHovered, isDropdownHovered, persistDropdown]);
+
+  // outside click listener: close dropdown if click is outside the currently open dropdown
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      const target = e.target;
+      // If there's no open dropdown, nothing to do
+      if (!dropdownRef.current) return;
+      // If click is inside the currently rendered dropdown, ignore
+      if (dropdownRef.current.contains(target)) return;
+      // Otherwise close dropdown and clear persisted state
+      setOpenDropdown(null);
+      setPersistDropdown(false);
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+    return () => document.removeEventListener("click", handleDocumentClick);
   }, []);
 
   const navItems = [
@@ -47,30 +100,29 @@ const Navbar = () => {
     { name: "Company", dropdown: true },
   ];
 
-  // === Dropdown Content Arrays ===
   const tradingDropdownItems = [
     {
       icon: <FaChartLine className="text-[#0040FF] text-xl" />,
       title: "Markets",
-      description: "A world of opportunity in every market",
+      description: "A world of opportunity",
       link: "/markets",
     },
     {
       icon: <FaCogs className="text-[#0040FF] text-xl" />,
       title: "Platforms",
-      description: "Trade with cutting-edge technology",
+      description: "Cutting-edge",
       link: "/platforms",
     },
     {
       icon: <FaUserAlt className="text-[#0040FF] text-xl" />,
       title: "Trading Accounts",
-      description: "Built for every level of expertise",
+      description: "For all levels",
       link: "/trading-accounts",
     },
     {
       icon: <FaCopy className="text-[#0040FF] text-xl" />,
       title: "Copy Trading",
-      description: "Trade smarter with top-performing traders",
+      description: "Copy pros",
       link: "/copy-trading",
     },
   ];
@@ -79,77 +131,59 @@ const Navbar = () => {
     {
       icon: <FaCheckCircle className="text-[#0040FF] text-xl" />,
       title: "Overview",
-      description: "Our suite of powerful, intuitive trading tools",
+      description: "Tools suite",
       link: "/tools-overview",
     },
     {
       icon: <FaBullhorn className="text-[#0040FF] text-xl" />,
       title: "Market Buzz",
-      description: "Stay ahead of market trends using AI",
+      description: "AI insights",
       link: "/market-buzz",
     },
     {
       icon: <FaCalendarAlt className="text-[#0040FF] text-xl" />,
       title: "Economic Calendar",
-      description: "Chart the next economic event",
+      description: "Events",
       link: "/economic-calendar",
     },
     {
       icon: <FaBook className="text-[#0040FF] text-xl" />,
       title: "Trading Glossary",
-      description: "Find out what it all means",
+      description: "Terms explained",
       link: "/trading-glossary",
     },
     {
       icon: <FaRobot className="text-[#0040FF] text-xl" />,
       title: "Expert Advisor",
-      description: "Let technology do the heavy lifting",
+      description: "Automation",
       link: "/expert-advisor",
     },
   ];
 
   const promotionsDropdownItems = [
     {
-      icon: <FaCheckCircle className="text-[#0040FF] text-xl" />,
-      title: "Overview",
-      description: "Make the most out of your trades",
-      link: "/promotions-overview",
-    },
-    {
       icon: <FaMedal className="text-[#0040FF] text-xl" />,
       title: "Loyalty Program",
-      description: "There's always something more with us",
+      description: "Rewards",
       link: "/loyalty-program",
-    },
-    {
-      icon: <FaHandshake className="text-[#0040FF] text-xl" />,
-      title: "Refer a Friend",
-      description: "Trading is always better with friends",
-      link: "/refer-a-friend",
     },
     {
       icon: <FaGift className="text-[#0040FF] text-xl" />,
       title: "Welcome Bonus",
-      description: "A welcome gift for you",
+      description: "New user bonus",
       link: "/welcome-bonus",
     },
     {
       icon: <FaCoins className="text-[#0040FF] text-xl" />,
       title: "Deposit Bonus",
-      description: "More on every deposit you make",
+      description: "More on deposits",
       link: "/deposit-bonus",
     },
     {
-      icon: <FaUsers className="text-[#0040FF] text-xl" />,
-      title: "Active Trader Program",
-      description: "Bonuses for staying active",
-      link: "/active-trader-program",
-    },
-    {
-      icon: <FaServer className="text-[#0040FF] text-xl" />,
-      title: "VPS Refund",
-      description: "More reasons to stay connected",
-      link: "/vps-refund",
+      icon: <FaHandshake className="text-[#0040FF] text-xl" />,
+      title: "Refer a Friend",
+      description: "Share rewards",
+      link: "/refer-a-friend",
     },
   ];
 
@@ -157,54 +191,29 @@ const Navbar = () => {
     {
       icon: <FaInfoCircle className="text-[#0040FF] text-xl" />,
       title: "About Us",
-      description: "We make trading easy",
+      description: "Who we are",
       link: "/about-us",
-    },
-    {
-      icon: <FaHandshake className="text-[#0040FF] text-xl" />,
-      title: "Our Partners",
-      description: "How we work together",
-      link: "/our-partners",
-    },
-    {
-      icon: <FaMedal className="text-[#0040FF] text-xl" />,
-      title: "Our Awards",
-      description: "We do better, every time",
-      link: "/our-awards",
-    },
-    {
-      icon: <FaBell className="text-[#0040FF] text-xl" />,
-      title: "Trading Notifications",
-      description: "Updates on trading conditions",
-      link: "/trading-notifications",
-    },
-    {
-      icon: <FaBalanceScale className="text-[#0040FF] text-xl" />,
-      title: "Legal Hub",
-      description: "How we protect you",
-      link: "/legal-hub",
     },
     {
       icon: <FaHeadset className="text-[#0040FF] text-xl" />,
       title: "Help Centre",
-      description: "Questions? Find solutions here",
+      description: "Support",
       link: "/help-centre",
     },
     {
-      icon: <FaHandHoldingUsd className="text-[#0040FF] text-xl" />,
-      title: "Sponsorship",
-      description: "For those who share our passion",
-      link: "/sponsorship",
+      icon: <FaMedal className="text-[#0040FF] text-xl" />,
+      title: "Our Awards",
+      description: "Recognition",
+      link: "/our-awards",
     },
     {
-      icon: <FaLeaf className="text-[#0040FF] text-xl" />,
-      title: "ESG",
-      description: "Putting our philosophy into action",
-      link: "/esg",
+      icon: <FaBalanceScale className="text-[#0040FF] text-xl" />,
+      title: "Legal Hub",
+      description: "Legal",
+      link: "/legal-hub",
     },
   ];
 
-  // === Dropdown Renderer ===
   const renderDropdown = (type) => {
     let items = [];
     if (type === "Trading") items = tradingDropdownItems;
@@ -213,12 +222,31 @@ const Navbar = () => {
     else if (type === "Company") items = companyDropdownItems;
 
     return (
-      <div className="absolute left-0 top-[2.8rem] w-[360px] bg-white text-black rounded-2xl shadow-xl py-4 animate-fadeIn">
+      <div
+        ref={dropdownRef}
+        className="absolute left-0 top-full mt-2 w-[360px] bg-white text-black rounded-2xl shadow-xl py-4 z-50"
+        onMouseEnter={() => {
+          if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+          }
+          setIsDropdownHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsDropdownHovered(false);
+        }}
+        role="menu"
+      >
         {items.map((drop, index) => (
           <Link
             key={index}
             to={drop.link}
             className="flex items-start gap-3 px-5 py-3 hover:bg-gray-100 transition"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setOpenDropdown(null);
+              setPersistDropdown(false);
+            }}
           >
             <div className="mt-1">{drop.icon}</div>
             <div>
@@ -240,73 +268,133 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* LOGO */}
-        <div className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="VALTRADEX"
-            className="w-[55px] h-auto object-contain"
-          />
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="VALTRADEX" className="w-[55px] object-contain" />
           <div className="flex flex-col leading-tight">
-            <h1 className="text-gold text-lg font-bold tracking-wide">
-              VALTRADEX
-            </h1>
+            <h1 className="text-[#00CFFF] text-lg font-bold">VALTRADEX</h1>
             <span className="text-xs text-gray-400 tracking-widest">
               GLOBAL TRADING
             </span>
           </div>
-        </div>
+        </Link>
 
-        {/* DESKTOP MENU */}
+        {/* desktop nav */}
         <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-white relative">
           {navItems.map((item) => (
             <div
               key={item.name}
               className="relative"
-              onMouseEnter={() =>
-                item.dropdown ? setOpenDropdown(item.name) : null
-              }
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => {
+                if (closeTimeoutRef.current) {
+                  clearTimeout(closeTimeoutRef.current);
+                  closeTimeoutRef.current = null;
+                }
+                setIsNavItemHovered(true);
+                // only set openDropdown if not already persist-click-opened by the same item
+                setOpenDropdown(item.name);
+              }}
+              onMouseLeave={() => {
+                setIsNavItemHovered(false);
+              }}
             >
-              <Link
-                to={`/${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="hover:text-gold transition"
+              <span
+                className="cursor-pointer hover:text-[#00CFFF] transition"
+                onClick={(e) => {
+                  // stop propagation so document click handler doesn't run immediately
+                  e.stopPropagation();
+                  if (openDropdown === item.name && persistDropdown) {
+                    // toggle off if already persisted
+                    setOpenDropdown(null);
+                    setPersistDropdown(false);
+                  } else {
+                    setOpenDropdown(item.name);
+                    setPersistDropdown(true);
+                  }
+                }}
               >
                 {item.name}
-              </Link>
+              </span>
 
-              {/* DROPDOWN */}
               {item.dropdown &&
                 openDropdown === item.name &&
                 renderDropdown(item.name)}
             </div>
           ))}
 
-          <button className="ml-4 bg-[#0040FF] hover:bg-[#0059FF] text-white font-semibold px-5 py-2 rounded-md transition-all">
-            Trade now
-          </button>
-
           <Link
             to="/login"
-            className="ml-4 hover:text-gold transition font-semibold"
+            className="hover:text-[#00CFFF] transition font-semibold"
           >
             Login
           </Link>
 
+          <button className="bg-[#0040FF] hover:bg-[#0059FF] text-white font-semibold px-5 py-2 rounded-md transition-all">
+            Trade now
+          </button>
+
           <div className="flex items-center gap-1 cursor-pointer">
-            <FaGlobe className="text-gold text-sm" />
+            <FaGlobe className="text-[#00CFFF] text-sm" />
             <span className="text-sm">EN</span>
           </div>
         </nav>
 
-        {/* MOBILE MENU TOGGLE */}
+        {/* mobile toggle */}
         <button
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          onClick={() => setIsMobileMenuOpen((p) => !p)}
           className="lg:hidden text-white text-2xl"
         >
-          {isMobileOpen ? <FaTimes /> : <FaBars />}
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
+
+      {/* mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-[#030B17] text-white px-6 py-6 space-y-4">
+          {navItems.map((item) => (
+            <div key={item.name}>
+              <p
+                className="font-semibold text-lg mb-2 cursor-pointer flex justify-between items-center"
+                onClick={() =>
+                  setOpenDropdown(openDropdown === item.name ? null : item.name)
+                }
+              >
+                {item.name}
+                <span className="text-[#00CFFF]">
+                  {openDropdown === item.name ? "-" : "+"}
+                </span>
+              </p>
+              {openDropdown === item.name && (
+                <div className="bg-[#0F1626] rounded-md my-2 mx-4 py-3">
+                  {(item.name === "Trading"
+                    ? tradingDropdownItems
+                    : item.name === "Tools"
+                    ? toolsDropdownItems
+                    : item.name === "Promotions"
+                    ? promotionsDropdownItems
+                    : companyDropdownItems
+                  ).map((d, i) => (
+                    <Link
+                      key={i}
+                      to={d.link}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-left px-6 py-2 text-sm hover:text-[#00CFFF]"
+                    >
+                      {d.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          <Link to="/login" className="block py-2 hover:text-[#00CFFF]">
+            Login
+          </Link>
+          <button className="w-full bg-[#0040FF] hover:bg-[#0059FF] text-white font-semibold px-5 py-3 rounded-md transition-all">
+            Trade now
+          </button>
+        </div>
+      )}
     </header>
   );
 };
