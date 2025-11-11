@@ -1,18 +1,19 @@
 import React from "react";
+import ImageTextDarkSmallBanner from "../common/ImageTextDarkSmallBanner";
+// import calendarImage from "../../assets/economic-calendar.png"; // your image path
 
 const EconomicCalendar = () => {
   return (
-    <section className="pt-28 pb-16 bg-gray-50 min-h-screen">
-      <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-[#0040FF] mb-4">
-          Economic Calendar
-        </h1>
-        <p className="text-gray-700 text-lg">
-          Track key financial events, market announcements, and economic
-          indicators that move the markets.
-        </p>
-      </div>
-    </section>
+    <>
+      <ImageTextDarkSmallBanner
+        subtitle="Economic Calendar"
+        title="CHART"
+        highlight="YOUR COURSE"
+        description="Timing is everything. Make it count with VT Markets' Economic Calendar."
+        // image={calendarImage}
+        reverse={false}
+      />
+    </>
   );
 };
 

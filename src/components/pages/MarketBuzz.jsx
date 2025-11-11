@@ -1,16 +1,20 @@
 import React from "react";
+import ImageTextDarkBanner from "../common/ImageTextDarkBanner";
+// import marketBuzzImage from "../../assets/market-buzz-banner.png"; // replace with your image
 
 const MarketBuzz = () => {
   return (
-    <section className="pt-28 pb-16 bg-white min-h-screen">
-      <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-4xl font-bold text-[#0040FF] mb-4">Market Buzz</h1>
-        <p className="text-gray-700 text-lg">
-          Stay ahead of global trends and breaking financial updates powered by
-          AI-driven market analytics.
-        </p>
-      </div>
-    </section>
+    <>
+      <ImageTextDarkBanner
+        subtitle="Market Buzz"
+        title="NO MORE"
+        highlight="ENDLESS"
+        title2="SCROLLING"
+        description="Discover what’s moving the market today with VT Markets' Market Buzz."
+        // image={marketBuzzImage}
+        reverse={false}
+      />
+    </>
   );
 };
 

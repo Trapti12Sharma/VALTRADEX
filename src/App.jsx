@@ -15,14 +15,36 @@ import MarketBuzz from "./components/pages/MarketBuzz";
 import EconomicCalendar from "./components/pages/EconomicCalendar";
 import TradingGlossary from "./components/pages/TradingGlossary";
 import ExpertAdvisor from "./components/pages/ExpertAdvisor";
-import LoyaltyProgram from "./components/pages/LoyaltyProgram";
-import WelcomeBonus from "./components/pages/WelcomeBonus";
-import DepositBonus from "./components/pages/DepositBonus";
 import ReferFriend from "./components/pages/ReferFriend";
 import AboutUs from "./components/pages/AboutUs";
 import HelpCentre from "./components/pages/HelpCentre";
 import OurAwards from "./components/pages/OurAwards";
 import LegalHub from "./components/pages/LegalHub";
+
+// 🔹 Market Pages
+import Forex from "./components/pages/Forex";
+import Indices from "./components/pages/Indices";
+import Energies from "./components/pages/Energies";
+import PreciousMetals from "./components/pages/PreciousMetals";
+import SoftCommodities from "./components/pages/SoftCommodities";
+import ETFs from "./components/pages/ETFs";
+import CFDShares from "./components/pages/CFDShares";
+import CFDBonds from "./components/pages/CFDBonds";
+
+// 🔹 Platform Pages
+import ValtradexApp from "./components/pages/ValtradexApp";
+import MetaTrader5 from "./components/pages/MetaTrader5";
+import MetaTrader4 from "./components/pages/MetaTrader4";
+import TradingView from "./components/pages/TradingView";
+import WebTrader from "./components/pages/WebTrader";
+
+// 🔹 Trading Account Pages (NEW)
+import StandardSTP from "./components/pages/StandardSTP";
+import RawECN from "./components/pages/RawECN";
+import ProECN from "./components/pages/ProECN";
+import SwapFree from "./components/pages/SwapFree";
+import CentAccount from "./components/pages/CentAccount";
+import DemoAccount from "./components/pages/DemoAccount";
 
 function App() {
   return (
@@ -42,6 +64,31 @@ function App() {
           <Route path="/trading-accounts" element={<TradingAccounts />} />
           <Route path="/copy-trading" element={<CopyTrading />} />
 
+          {/* 🔹 Trading Account Sub Pages */}
+          <Route path="/standard-stp" element={<StandardSTP />} />
+          <Route path="/raw-ecn" element={<RawECN />} />
+          <Route path="/pro-ecn" element={<ProECN />} />
+          <Route path="/swap-free" element={<SwapFree />} />
+          <Route path="/cent-account" element={<CentAccount />} />
+          <Route path="/demo-account" element={<DemoAccount />} />
+
+          {/* 🔹 Market Category Pages */}
+          <Route path="/forex" element={<Forex />} />
+          <Route path="/indices" element={<Indices />} />
+          <Route path="/energies" element={<Energies />} />
+          <Route path="/precious-metals" element={<PreciousMetals />} />
+          <Route path="/soft-commodities" element={<SoftCommodities />} />
+          <Route path="/etfs" element={<ETFs />} />
+          <Route path="/cfd-shares" element={<CFDShares />} />
+          <Route path="/cfd-bonds" element={<CFDBonds />} />
+
+          {/* 🔹 Platform Category Pages */}
+          <Route path="/valtradex-app" element={<ValtradexApp />} />
+          <Route path="/metatrader-5" element={<MetaTrader5 />} />
+          <Route path="/metatrader-4" element={<MetaTrader4 />} />
+          <Route path="/tradingview" element={<TradingView />} />
+          <Route path="/webtrader" element={<WebTrader />} />
+
           {/* 🔹 Tools Section */}
           <Route path="/tools-overview" element={<ToolsOverview />} />
           <Route path="/market-buzz" element={<MarketBuzz />} />
@@ -50,9 +97,6 @@ function App() {
           <Route path="/expert-advisor" element={<ExpertAdvisor />} />
 
           {/* 🔹 Promotions Section */}
-          <Route path="/loyalty-program" element={<LoyaltyProgram />} />
-          <Route path="/welcome-bonus" element={<WelcomeBonus />} />
-          <Route path="/deposit-bonus" element={<DepositBonus />} />
           <Route path="/refer-a-friend" element={<ReferFriend />} />
 
           {/* 🔹 Company Section */}

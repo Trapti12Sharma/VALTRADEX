@@ -46,7 +46,7 @@ const ImageTextBanner = ({
         </p>
       </motion.div>
 
-      {/* 🔹 Right Image with subtle floating animation */}
+      {/* 🔹 Right Image — now larger and responsive */}
       <motion.div
         className={`w-full md:w-1/2 flex justify-center mt-10 md:mt-0 ${
           reverse ? "md:order-1" : ""
@@ -59,7 +59,7 @@ const ImageTextBanner = ({
         <motion.img
           src={image}
           alt={highlight}
-          className="max-w-xs md:max-w-md lg:max-w-lg"
+          className="w-[85%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-[100%] max-w-[750px] object-contain drop-shadow-2xl"
           animate={{ y: [0, -10, 0] }}
           transition={{
             repeat: Infinity,
