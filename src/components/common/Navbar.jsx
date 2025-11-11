@@ -52,13 +52,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    return () => (document.body.style.overflow = "unset");
   }, [isMobileMenuOpen]);
 
+  // desktop dropdown close on hover out
   useEffect(() => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (!isNavItemHovered && !isDropdownHovered && !persistDropdown) {
@@ -69,6 +69,7 @@ const Navbar = () => {
     };
   }, [isNavItemHovered, isDropdownHovered, persistDropdown]);
 
+  // close dropdown if click outside
   useEffect(() => {
     const handleDocumentClick = (e) => {
       if (!dropdownRef.current) return;
@@ -88,7 +89,6 @@ const Navbar = () => {
     { name: "Company", dropdown: true },
   ];
 
-  // ✅ Subitems under “Trading Accounts”
   const tradingAccountSubItems = [
     {
       icon: <FaExchangeAlt className="text-[#0040FF] text-lg" />,
@@ -122,7 +122,6 @@ const Navbar = () => {
     },
   ];
 
-  // ✅ Main “Trading” dropdown items
   const tradingDropdownItems = [
     {
       icon: <FaUserAlt className="text-[#0040FF] text-xl" />,
@@ -263,7 +262,6 @@ const Navbar = () => {
     },
   ];
 
-  // ✅ Reusable dropdown renderer (Updated to keep sub-items inside main dropdown)
   const renderDropdown = (type) => {
     let items = [];
     if (type === "Trading") items = tradingDropdownItems;
@@ -296,7 +294,6 @@ const Navbar = () => {
                     {drop.description}
                   </p>
                 )}
-
                 {drop.subItems && (
                   <div className="mt-2 flex flex-col gap-1">
                     {drop.subItems.map((sub, i) => (
@@ -322,6 +319,9 @@ const Navbar = () => {
     );
   };
 
+  // ✅ Each mobile dropdown managed separately
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -341,6 +341,7 @@ const Navbar = () => {
           </div>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-white relative">
           {navItems.map((item) => (
             <div
@@ -396,13 +397,104 @@ const Navbar = () => {
           </div>
         </nav>
 
+        {/* Mobile toggle */}
         <button
           onClick={() => setIsMobileMenuOpen((p) => !p)}
+          aria-expanded={isMobileMenuOpen}
+          aria-label="Toggle menu"
           className="lg:hidden text-white text-2xl"
         >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
+
+      {/* ✅ Mobile Menu (Fixed Dropdown Expansion) */}
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden absolute left-0 right-0 top-full bg-[#030B17] text-white z-40 overflow-y-auto h-[100vh] transition-all duration-300"
+          role="dialog"
+          aria-hidden={!isMobileMenuOpen}
+        >
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <div key={item.name} className="border-b border-[#0B1320] pb-3">
+                  <button
+                    className="w-full flex items-center justify-between text-left text-lg font-semibold py-2"
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === item.name ? null : item.name
+                      )
+                    }
+                  >
+                    <span>{item.name}</span>
+                    <span className="text-xl">
+                      {openMobileDropdown === item.name ? "−" : "+"}
+                    </span>
+                  </button>
+
+                  {item.dropdown && openMobileDropdown === item.name && (
+                    <div className="mt-2 pl-4 space-y-2">
+                      {(item.name === "Trading"
+                        ? tradingDropdownItems
+                        : item.name === "Tools"
+                        ? toolsDropdownItems
+                        : item.name === "Markets"
+                        ? marketsDropdownItems
+                        : item.name === "Platforms"
+                        ? platformsDropdownItems
+                        : companyDropdownItems
+                      ).map((drop, i) => (
+                        <div key={i} className="mb-2">
+                          <Link
+                            to={drop.link}
+                            className="flex items-center gap-3 py-2 text-gray-200 hover:text-[#00CFFF]"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {drop.icon}
+                            <span>{drop.title}</span>
+                          </Link>
+
+                          {drop.subItems && (
+                            <div className="pl-6 mt-1 flex flex-col gap-1">
+                              {drop.subItems.map((sub, j) => (
+                                <Link
+                                  key={j}
+                                  to={sub.link}
+                                  className="py-1 text-gray-400 hover:text-[#00CFFF]"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {sub.title}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              <div className="pt-4">
+                <Link
+                  to="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-2 font-semibold hover:text-[#00CFFF]"
+                >
+                  Login
+                </Link>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full mt-3 bg-[#0040FF] hover:bg-[#0059FF] text-white font-semibold py-3 rounded-md"
+                >
+                  Trade now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
