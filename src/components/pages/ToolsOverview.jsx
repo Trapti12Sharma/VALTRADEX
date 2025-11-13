@@ -51,7 +51,7 @@ const ToolsOverview = () => {
   ];
 
   const disclaimer =
-    "Disclaimer: VT Markets does not provide its own trading signals for clients. The signal service is provided by 3rd parties, and their advice does not constitute and should not be regarded as investment advice from VT Markets. All clients are advised to act on signals at their own discretion.";
+    "Disclaimer: Valtradex does not provide its own trading signals for clients. The signal service is provided by 3rd parties, and their advice does not constitute and should not be regarded as investment advice from Valtradex. All clients are advised to act on signals at their own discretion.";
 
   return (
     <>

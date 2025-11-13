@@ -12,11 +12,11 @@ const WebTrader = () => {
     <>
       {/* 🔹 Top video banner section */}
       <VideoTextBanner
-        subtitle="About VT Markets"
+        subtitle="About Valtradex"
         title="TRADING"
         highlight="MADE EASY"
-        description="Since 2015, VT Markets has been dedicated to simplifying trading by making it more intuitive, accessible, and efficient for traders worldwide."
-        buttonText="Start Your Trading Journey with VT Markets →"
+        description="Since 2015, Valtradex has been dedicated to simplifying trading by making it more intuitive, accessible, and efficient for traders worldwide."
+        buttonText="Start Your Trading Journey with Valtradex →"
         videoSrc={aboutusVideo}
         onButtonClick={() => window.open("/trading-journey", "_blank")}
       />

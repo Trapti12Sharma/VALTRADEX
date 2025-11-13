@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 /**
- * Reusable Dark Hero Banner (VT Markets mini style)
+ * Reusable Dark Hero Banner (Valtradex mini style)
  * Props:
  * - subtitle: string
  * - title: string
@@ -15,7 +15,7 @@ const ImageTextDarkSmallBanner = ({
   subtitle = "Economic Calendar",
   title = "CHART",
   highlight = "YOUR COURSE",
-  description = "Timing is everything. Make it count with VT Markets' Economic Calendar.",
+  description = "Timing is everything. Make it count with Valtradex' Economic Calendar.",
   image,
   reverse = false,
 }) => {

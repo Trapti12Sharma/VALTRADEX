@@ -23,7 +23,7 @@ const RiskWarningSection = ({
         {/* 🔹 Paragraphs */}
         {paragraphs.map((text, idx) => (
           <p key={idx} className="text-gray-700">
-            {text.replace(/VT Markets/g, brandName)}
+            {text.replace(/Valtradex/g, brandName)}
           </p>
         ))}
 

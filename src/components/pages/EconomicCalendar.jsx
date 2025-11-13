@@ -9,7 +9,7 @@ const EconomicCalendar = () => {
         subtitle="Economic Calendar"
         title="CHART"
         highlight="YOUR COURSE"
-        description="Timing is everything. Make it count with VT Markets' Economic Calendar."
+        description="Timing is everything. Make it count with Valtradex' Economic Calendar."
         // image={calendarImage}
         reverse={false}
       />

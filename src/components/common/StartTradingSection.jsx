@@ -32,7 +32,7 @@ const StartTradingSection = () => {
       >
         <h2 className="text-3xl md:text-5xl font-extrabold leading-tight mb-8">
           Start trading forex with <br />
-          <span className="text-[#00CFFF]">VT Markets</span> today.
+          <span className="text-[#00CFFF]">Valtradex</span> today.
         </h2>
 
         {/* 🪜 Steps Section */}

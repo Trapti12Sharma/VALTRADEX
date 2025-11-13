@@ -332,7 +332,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="VALTRADEX" className="w-[55px] object-contain" />
+          {/* ✅ Increased logo size & removed white background */}
+          <img
+            src={logo}
+            alt="VALTRADEX"
+            className="w-[70px] h-auto object-contain bg-transparent"
+          />
           <div className="flex flex-col leading-tight">
             <h1 className="text-[#00CFFF] text-lg font-bold">VALTRADEX</h1>
             <span className="text-xs text-gray-400 tracking-widest">

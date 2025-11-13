@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const TrustedProvidersSection = ({
   title = "Our preferred forex signal providers",
   logos = [],
-  disclaimer = "Disclaimer: VT Markets does not provide its own trading signals for clients. The signal service is provided by 3rd parties, and their advice does not constitute and should not be regarded as investment advice from VT Markets. All clients are advised to act on signals at their own discretion.",
+  disclaimer = "Disclaimer: Valtradex does not provide its own trading signals for clients. The signal service is provided by 3rd parties, and their advice does not constitute and should not be regarded as investment advice from Valtradex. All clients are advised to act on signals at their own discretion.",
 }) => {
   return (
     <section className="bg-white text-center py-20 px-6 md:px-16 lg:px-28">

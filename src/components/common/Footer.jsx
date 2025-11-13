@@ -58,7 +58,6 @@ const Footer = () => {
             <li>Standard STP</li>
             <li>RAW ECN</li>
             <li>PRO ECN</li>
-            <li>Swap Free</li>
             <li>Cent Account</li>
             <li>Demo Account</li>
           </ul>
@@ -118,22 +117,62 @@ const Footer = () => {
 
       {/* Social + Contact */}
       <div className="max-w-7xl mx-auto mt-10 px-6 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-[#1a1a1a] pt-6">
+        {/* Social Links */}
         <div className="flex items-center gap-4">
           <span className="font-medium text-white">Follow us on:</span>
           <div className="flex gap-4 text-white text-lg">
-            <FaLinkedin className="hover:text-gold transition" />
-            <FaYoutube className="hover:text-gold transition" />
-            <FaXTwitter className="hover:text-gold transition" />
-            <FaFacebookF className="hover:text-gold transition" />
-            <FaInstagram className="hover:text-gold transition" />
+            {/* <a
+              href="https://www.linkedin.com/company/valtradex/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#00CFFF] transition"
+            >
+              <FaLinkedin />
+            </a> */}
+            {/* <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#00CFFF] transition"
+            >
+              <FaYoutube />
+            </a> */}
+            {/* <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#00CFFF] transition"
+            >
+              <FaXTwitter />
+            </a> */}
+            <a
+              href="https://www.facebook.com/profile.php?id=61583848707068"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#00CFFF] transition"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com/valtradex/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#00CFFF] transition"
+            >
+              <FaInstagram />
+            </a>
           </div>
         </div>
 
-        <div className="text-gray-400">
+        {/* Updated Email */}
+        <div className="text-gray-400 text-sm">
           Customer Service:{" "}
-          <span className="text-[#00CFFF] hover:underline cursor-pointer">
-            info@valtradex.com
-          </span>
+          <a
+            href="mailto:valtradex69@gmail.com"
+            className="text-[#00CFFF] hover:underline cursor-pointer"
+          >
+            valtradex69@gmail.com
+          </a>
         </div>
       </div>
 

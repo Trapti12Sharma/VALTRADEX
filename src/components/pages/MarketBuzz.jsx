@@ -10,7 +10,7 @@ const MarketBuzz = () => {
         title="NO MORE"
         highlight="ENDLESS"
         title2="SCROLLING"
-        description="Discover what’s moving the market today with VT Markets' Market Buzz."
+        description="Discover what’s moving the market today with Valtradex' Market Buzz."
         // image={marketBuzzImage}
         reverse={false}
       />

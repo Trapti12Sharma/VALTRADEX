@@ -2,14 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 
 /**
- * Reusable Dark Hero Banner (VT Markets style)
+ * Reusable Dark Hero Banner (Valtradex style)
  */
 const ImageTextDarkBanner = ({
   subtitle = "Market Buzz",
   title = "NO MORE",
   highlight = "ENDLESS",
   title2 = "SCROLLING",
-  description = "Discover what’s moving the market today with VT Markets' Market Buzz.",
+  description = "Discover what’s moving the market today with Valtradex' Market Buzz.",
   image,
   reverse = false,
 }) => {

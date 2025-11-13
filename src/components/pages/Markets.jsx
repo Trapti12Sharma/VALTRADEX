@@ -11,7 +11,7 @@ const Markets = () => {
         videoMp4={marketsBannerVideo}
         title="Markets"
         highlight="YOUR PLAYGROUND"
-        description="The world is your oyster with VT Markets.
+        description="The world is your oyster with Valtradex.
 Click on any of the trading instruments above to learn more."
         buttonText="Start Your Journey"
         onButtonClick={() => window.open("/trading-journey", "_blank")}

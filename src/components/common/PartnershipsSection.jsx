@@ -53,7 +53,7 @@ const PartnershipsSection = () => {
             <div>
               <img
                 src={partnership2}
-                alt="VT Markets Global Sponsorship"
+                alt="Valtradex Global Sponsorship"
                 className="w-full rounded-2xl object-cover"
               />
             </div>
