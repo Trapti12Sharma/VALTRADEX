@@ -5,7 +5,7 @@ import TradingPlatformsSection from "../common/TradingPlatformsSection";
 import WhyTradersChooseUs from "../common/WhyTradersChooseUs";
 import PartnershipsSection from "../common/PartnershipsSection";
 import StartTradingSection from "../common/StartTradingSection";
-import FeatureCard from "../common/FeatureCard";
+import WhatsappChatButton from "../common/WhatsappChatButton";
 import Footer from "../common/Footer";
 import { FaChartLine, FaLock, FaGlobe } from "react-icons/fa";
 
@@ -31,6 +31,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <WhatsappChatButton />
       <MarketPossibilitiesSection />
       <AppPromotionSection />
       <TradingPlatformsSection />

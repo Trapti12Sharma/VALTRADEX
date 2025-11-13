@@ -4,8 +4,10 @@ import FeatureCardsSection from "../common/FeatureCardsSection";
 import FaqSection from "../common/FaqSection";
 import WhiteGradientBanner from "../common/WhiteGradientBanner";
 import FeatureSection from "../common/FeatureSection";
-import standardImg from "../../assets/standard1.png";
-import platformImage from "../../assets/standard.png";
+import GradientCTASection from "../common/GradientCTASection";
+import standardImg from "../../assets/centaccount.png";
+import platformImage from "../../assets/raw_ecn.png";
+import whitewave from "../../assets/bgimage.png";
 
 import { LuDollarSign } from "react-icons/lu";
 import { BsGrid3X3Gap } from "react-icons/bs";
@@ -83,18 +85,18 @@ const CentAccount = () => {
     <>
       {/* 🔹 Hero Section */}
       <ImageTextBanner
-        subtitle="Standard STP Account"
-        title="START WITH"
-        highlight="CERTAINTY"
-        description="With no dealing desk and ultra-fast execution, our Standard STP account gives you direct access to global markets."
+        subtitle="Cent Account"
+        title="SMALL STEPS,"
+        highlight="BIG MOVES"
+        description="Discover the Cent Account, designed for traders seeking lower risks while learning or testing strategies."
         image={platformImage}
       />
 
       <FeatureSection
         image={standardImg}
-        title="Closer Than You Think"
-        description="Stay closer to the action with tight spreads that bring you a clearer, more efficient trading experience."
-        subtitle="The account that grows with you"
+        title="Size Isn't Everything"
+        description="From the first cent to your greatest strategy, we’re with you every step of the way."
+        subtitle="Stay in control"
         features={[
           "Real market prices with no hidden markups",
           "Access forex, indices, commodities, and more.",
@@ -104,14 +106,21 @@ const CentAccount = () => {
       />
 
       <WhiteGradientBanner
-        title="Effortless Trading"
-        description="Built around the MetaTrader 4 and MetaTrader 5 platforms, Expert Advisors are designed for quick and easy setup."
+        title="Closer to the Market"
+        description="You’ve mastered the basics. Now move from micro precision to direct market access with a Standard STP account."
         buttonText="Learn More"
-        // backgroundImage={whitewave}
+        backgroundImage={whitewave}
         onButtonClick={() => window.open("/metatrader-setup", "_blank")}
       />
 
       <FeatureCardsSection title="Always One Step Ahead" features={features} />
+
+      <GradientCTASection
+        title="Looking for Even Lower Commissions?"
+        description="Step up to Pro ECN — our most cost-effective account built for high-volume traders."
+        buttonText="Upgrade to Pro ECN"
+        onButtonClick={() => window.open("/pro-ecn", "_blank")}
+      />
 
       <FaqSection title="Frequently Asked Questions" faqs={faqs} />
     </>

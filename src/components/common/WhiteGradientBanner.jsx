@@ -1,31 +1,38 @@
 import React from "react";
 
 const WhiteGradientBanner = ({
-  title,
-  description,
-  buttonText,
+  title = "Empower Your Trading Journey",
+  description = "Experience reliable trading infrastructure with Valtradex — where innovation meets execution.",
+  buttonText = "Get Started",
   backgroundImage,
   onButtonClick,
 }) => {
+  console.log("Background image received:", backgroundImage); // Debug check
+
   return (
     <section
       className="relative flex flex-col items-center justify-center text-center px-6 py-32 md:py-48"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: backgroundImage
+          ? `url("${backgroundImage}")`
+          : "linear-gradient(white, #f0f0f0)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay for subtle color blending */}
-      <div className="absolute inset-0 bg-white/90"></div>
+      {/* ✅ Overlay */}
+      <div className="absolute inset-0 "></div>
 
+      {/* ✅ Content */}
       <div className="relative z-10 max-w-3xl">
         <h1 className="text-3xl md:text-5xl font-bold text-black mb-4">
           {title}
         </h1>
 
-        <p className="text-gray-700 text-base md:text-lg mb-8">{description}</p>
+        <p className="text-gray-700 text-base md:text-lg mb-8 leading-relaxed">
+          {description}
+        </p>
 
         {buttonText && (
           <button

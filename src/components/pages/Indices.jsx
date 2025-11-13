@@ -1,8 +1,14 @@
 import React from "react";
-import ImageTextCtaBanner from "../common/ImageTextCtaBanner";
+import VideoBanner from "../common/VideoBanner";
 import ImageTextUpAnimationSection from "../common/ImageTextUpAnimationSection";
-import FeatureTabsSection from "../common/FeatureTabsSection";
+import WhiteGradientBanner from "../common/WhiteGradientBanner";
+import StartTradingSection from "../common/StartTradingSection";
+import RelatedArticlesSection from "../common/RelatedArticlesSection";
+import FeatureCardsSection from "../common/FeatureCardsSection";
 import FaqSection from "../common/FaqSection";
+import { LuDollarSign } from "react-icons/lu";
+import { BsGrid3X3Gap } from "react-icons/bs";
+import { Layers } from "lucide-react";
 import {
   LineChart,
   Move,
@@ -15,10 +21,74 @@ import {
   ArrowDownUp,
 } from "lucide-react";
 
-import copyTradeImage from "../../assets/copytrading1.png";
-import smartTradeImage from "../../assets/copytrading2.png";
+import marketsBannerVideo from "../../assets/indices_banner_video.mp4";
+import smartTradeImage from "../../assets/indicesn1.png";
+import whitewave from "../../assets/bgimage.png";
+import article1 from "../../assets/forexn1.jpg";
+import article2 from "../../assets/forexn2.png";
+import article3 from "../../assets/forexn3.png";
 
 const Indices = () => {
+  const articles = [
+    {
+      image: article1,
+      category1: "AUD",
+      category2: "Forex",
+      title: "Aussie Gains as Shutdown Nears Resolution",
+      readTime: "8 mins",
+      date: "Nov 11, 2025",
+      daysAgo: "2 days ago",
+    },
+    {
+      image: article2,
+      category1: "Forex",
+      category2: "Yen",
+      title: "Yen Slides as Stimulus Bets Grow",
+      readTime: "8 mins",
+      date: "Nov 10, 2025",
+      daysAgo: "3 days ago",
+    },
+    {
+      image: article3,
+      category1: "Euro",
+      category2: "Forex",
+      title: "Euro Holds Near $1.16 as Traders Await Key Data",
+      readTime: "8 mins",
+      date: "Oct 23, 2025",
+      daysAgo: "3 weeks ago",
+    },
+  ];
+  const features = [
+    {
+      icon: <LuDollarSign />,
+      title: "Zero to Low Commissions",
+      description: "Keep more of what you earn with spreads starting from 0.0.",
+    },
+    {
+      icon: <BsGrid3X3Gap />,
+      title: "Over 1,000+ Ways to Trade",
+      description:
+        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+    },
+    {
+      icon: <Layers />,
+      title: "Accounts That Fit Your Style",
+      description:
+        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+    },
+    {
+      icon: <BsGrid3X3Gap />,
+      title: "Over 1,000+ Ways to Trade",
+      description:
+        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+    },
+    {
+      icon: <Layers />,
+      title: "Accounts That Fit Your Style",
+      description:
+        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+    },
+  ];
   const faqs = [
     {
       question: "Is copy trading profitable?",
@@ -68,95 +138,16 @@ const Indices = () => {
     },
   ];
 
-  const featureTabs = [
-    {
-      title: "Following Trades",
-      buttonText: "Start Copy Trading",
-      buttonLink: "#",
-      cards: [
-        {
-          icon: <LineChart />,
-          heading: "Birds-Eye View",
-          description:
-            "Pick a trader, check their stats—like performance and risk—and start copying instantly.",
-        },
-        {
-          icon: <Move />,
-          heading: "Know Their Every Move",
-          description:
-            "Explore top traders, track their performance, and follow their strategies with total transparency.",
-        },
-        {
-          icon: <User />,
-          heading: "Just Like the Pros",
-          description:
-            "Leverage the expertise of seasoned professionals and trade like the best in the business.",
-        },
-        {
-          icon: <Clock />,
-          heading: "Save Time",
-          description:
-            "No time to watch the markets? Let the experts do the work while you stay in control.",
-        },
-        {
-          icon: <Shield />,
-          heading: "Safe and Sound",
-          description:
-            "Secure from the second you sign up and copy with VTrade.",
-        },
-      ],
-    },
-    {
-      title: "Providing Signals",
-      buttonText: "Become a Signal Provider",
-      buttonLink: "#",
-      cards: [
-        {
-          icon: <DollarSign />,
-          heading: "Extra Income Without Extra Effort",
-          description:
-            "Trade as you always do while followers replicate your success automatically.",
-        },
-        {
-          icon: <Percent />,
-          heading: "Zero Fees",
-          description:
-            "Create tailored offers for each strategy and earn performance-based income your way.",
-        },
-        {
-          icon: <User />,
-          heading: "Build Your Reputation",
-          description:
-            "Stand out in the trading community and take your personal brand to the next level.",
-        },
-        {
-          icon: <BarChart3 />,
-          heading: "Flexible Profit Sharing",
-          description:
-            "Set your profit share anywhere from 0% to 100%—the choice is yours.",
-        },
-        {
-          icon: <ArrowDownUp />,
-          heading: "Payouts Your Way",
-          description:
-            "Pick a payment cycle that works for you: weekly, bi-weekly, monthly, or even yearly.",
-        },
-      ],
-    },
-  ];
-
   return (
     <>
       {/*  Top Hero Section */}
-      <ImageTextCtaBanner
-        subtitle="Copy Trading"
-        title="FOLLOW"
-        highlight="THE LEAD"
-        description="Step into smarter trading with VTrade."
-        buttonText="Start Copying"
-        buttonLink="#"
-        demoLink="#"
-        image={copyTradeImage}
+      <VideoBanner
+        videoMp4={marketsBannerVideo}
+        title="MEASURING"
+        highlight="MOMENTUM"
+        description="Chart the pulse of the global economy."
+        buttonText="Start Trading Indices"
+        onButtonClick={() => window.open("/trading-journey", "_blank")}
       />
 
       {/*  Trading Smarter Section (Bottom-to-Up Animation) */}
@@ -167,14 +158,25 @@ const Indices = () => {
         reverse={false} //  Text on right, image on left (like your screenshot)
       />
 
-      {/*  Following Trades / Providing Signals Section */}
-      <FeatureTabsSection
-        tabs={featureTabs}
-        buttonText="Start Copy Trading"
-        buttonLink="#"
+      <WhiteGradientBanner
+        title="Speed, Precision, Power"
+        description="Blister through the indices markets with cutting-edge fibre optic networks and the oneZero™ Liquidity Bridge."
+        buttonText="Learn More"
+        backgroundImage={whitewave}
+        onButtonClick={() => window.open("/metatrader-setup", "_blank")}
       />
 
+      <FeatureCardsSection title="Always One Step Ahead" features={features} />
+
+      <StartTradingSection />
+
       <FaqSection title="Frequently Asked Questions" faqs={faqs} />
+      <RelatedArticlesSection
+        title="Related Articles"
+        buttonText="Learn more"
+        onButtonClick={() => window.open("/blog", "_blank")}
+        articles={articles}
+      />
     </>
   );
 };

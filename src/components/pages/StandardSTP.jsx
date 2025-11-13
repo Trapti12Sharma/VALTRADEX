@@ -6,6 +6,7 @@ import WhiteGradientBanner from "../common/WhiteGradientBanner";
 import FeatureSection from "../common/FeatureSection";
 import standardImg from "../../assets/standard1.png";
 import platformImage from "../../assets/standard.png";
+import whitewave from "../../assets/bgimage.png";
 
 import { LuDollarSign } from "react-icons/lu";
 import { BsGrid3X3Gap } from "react-icons/bs";
@@ -104,10 +105,10 @@ const Platforms = () => {
       />
 
       <WhiteGradientBanner
-        title="Effortless Trading"
-        description="Built around the MetaTrader 4 and MetaTrader 5 platforms, Expert Advisors are designed for quick and easy setup."
+        title="Unparalleled Execution"
+        description="Run via the Equinix fibre optic network and linked to the VT Markets oneZero MT4 and MT5 Bridge, ensure lightning-fast execution on every trade."
         buttonText="Learn More"
-        // backgroundImage={whitewave}
+        backgroundImage={whitewave}
         onButtonClick={() => window.open("/metatrader-setup", "_blank")}
       />
 

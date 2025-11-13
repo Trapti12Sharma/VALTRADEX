@@ -1,26 +1,85 @@
 import React from "react";
-import ImageTextCtaBanner from "../common/ImageTextCtaBanner";
-
-import FeatureTabsSection from "../common/FeatureTabsSection";
+import WhiteGradientBanner from "../common/WhiteGradientBanner";
 import VideoBanner from "../common/VideoBanner";
 import FaqSection from "../common/FaqSection";
 import AnimatedStatsSection from "../common/AnimatedStatsSection";
-import {
-  LineChart,
-  Move,
-  User,
-  Clock,
-  Shield,
-  DollarSign,
-  Percent,
-  BarChart3,
-  ArrowDownUp,
-} from "lucide-react";
+import FeatureCardsSection from "../common/FeatureCardsSection";
+import StartTradingSection from "../common/StartTradingSection";
+import RelatedArticlesSection from "../common/RelatedArticlesSection";
+import { LuDollarSign } from "react-icons/lu";
+import { BsGrid3X3Gap } from "react-icons/bs";
+import { Layers } from "lucide-react";
 
 import forexImg from "../../assets/forex.png";
 import marketsBannerVideo from "../../assets/forex_banner_video.mp4";
+import whitewave from "../../assets/bgimage.png";
+import article1 from "../../assets/forexn1.jpg";
+import article2 from "../../assets/forexn2.png";
+import article3 from "../../assets/forexn3.png";
 
 const Forex = () => {
+  const articles = [
+    {
+      image: article1,
+      category1: "AUD",
+      category2: "Forex",
+      title: "Aussie Gains as Shutdown Nears Resolution",
+      readTime: "8 mins",
+      date: "Nov 11, 2025",
+      daysAgo: "2 days ago",
+    },
+    {
+      image: article2,
+      category1: "Forex",
+      category2: "Yen",
+      title: "Yen Slides as Stimulus Bets Grow",
+      readTime: "8 mins",
+      date: "Nov 10, 2025",
+      daysAgo: "3 days ago",
+    },
+    {
+      image: article3,
+      category1: "Euro",
+      category2: "Forex",
+      title: "Euro Holds Near $1.16 as Traders Await Key Data",
+      readTime: "8 mins",
+      date: "Oct 23, 2025",
+      daysAgo: "3 weeks ago",
+    },
+  ];
+
+  const features = [
+    {
+      icon: <LuDollarSign />,
+      title: "Zero to Low Commissions",
+      description: "Keep more of what you earn with spreads starting from 0.0.",
+    },
+    {
+      icon: <BsGrid3X3Gap />,
+      title: "Over 1,000+ Ways to Trade",
+      description:
+        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+    },
+    {
+      icon: <Layers />,
+      title: "Accounts That Fit Your Style",
+      description:
+        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+    },
+    {
+      icon: <BsGrid3X3Gap />,
+      title: "Over 1,000+ Ways to Trade",
+      description:
+        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+    },
+    {
+      icon: <Layers />,
+      title: "Accounts That Fit Your Style",
+      description:
+        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+    },
+  ];
+
   const faqs = [
     {
       question: "Is copy trading profitable?",
@@ -93,7 +152,24 @@ const Forex = () => {
         ]}
       />
 
+      <WhiteGradientBanner
+        title="Effortless Trading"
+        description="Built around the MetaTrader 4 and MetaTrader 5 platforms, Expert Advisors are designed for quick and easy setup."
+        buttonText="Learn More"
+        backgroundImage={whitewave}
+        onButtonClick={() => window.open("/metatrader-setup", "_blank")}
+      />
+
+      <FeatureCardsSection title="Always One Step Ahead" features={features} />
+      <StartTradingSection />
+
       <FaqSection title="Frequently Asked Questions" faqs={faqs} />
+      <RelatedArticlesSection
+        title="Related Articles"
+        buttonText="Learn more"
+        onButtonClick={() => window.open("/blog", "_blank")}
+        articles={articles}
+      />
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 // Common Layout Components
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
+import WhatsappChatButton from "./components/common/WhatsappChatButton";
 
 // Pages
 import Home from "./components/pages/Home";
@@ -120,6 +121,7 @@ function App() {
 
       {/* Footer */}
       <Footer />
+      <WhatsappChatButton />
     </div>
   );
 }

@@ -4,8 +4,10 @@ import FeatureCardsSection from "../common/FeatureCardsSection";
 import FaqSection from "../common/FaqSection";
 import WhiteGradientBanner from "../common/WhiteGradientBanner";
 import FeatureSection from "../common/FeatureSection";
-import standardImg from "../../assets/standard1.png";
-import platformImage from "../../assets/standard.png";
+import GradientCTASection from "../common/GradientCTASection";
+import standardImg from "../../assets/pro_ecn.png";
+import platformImage from "../../assets/raw_ecn.png";
+import whitewave from "../../assets/bgimage.png";
 
 import { LuDollarSign } from "react-icons/lu";
 import { BsGrid3X3Gap } from "react-icons/bs";
@@ -83,18 +85,18 @@ const ProECN = () => {
     <>
       {/* 🔹 Hero Section */}
       <ImageTextBanner
-        subtitle="Standard STP Account"
-        title="START WITH"
-        highlight="CERTAINTY"
-        description="With no dealing desk and ultra-fast execution, our Standard STP account gives you direct access to global markets."
+        subtitle="Pro ECN Account"
+        title="BUILT FOR"
+        highlight="PROS"
+        description="Ultra-low commissions designed for high-volume traders."
         image={platformImage}
       />
 
       <FeatureSection
         image={standardImg}
-        title="Closer Than You Think"
-        description="Stay closer to the action with tight spreads that bring you a clearer, more efficient trading experience."
-        subtitle="The account that grows with you"
+        title="Reap the rewards of Pro ECN Account for high volume traders"
+        description="Trade with ultra-tight spreads, performance, and cost-efficiency"
+        subtitle="Benefits of a Pro ECN Account"
         features={[
           "Real market prices with no hidden markups",
           "Access forex, indices, commodities, and more.",
@@ -104,14 +106,21 @@ const ProECN = () => {
       />
 
       <WhiteGradientBanner
-        title="Effortless Trading"
-        description="Built around the MetaTrader 4 and MetaTrader 5 platforms, Expert Advisors are designed for quick and easy setup."
+        title="Ready to Lower Your Trading Costs?"
+        description="Take your trading performance to the next level."
         buttonText="Learn More"
-        // backgroundImage={whitewave}
+        backgroundImage={whitewave}
         onButtonClick={() => window.open("/metatrader-setup", "_blank")}
       />
 
       <FeatureCardsSection title="Always One Step Ahead" features={features} />
+
+      <GradientCTASection
+        title="Looking for Even Lower Commissions?"
+        description="Step up to Pro ECN — our most cost-effective account built for high-volume traders."
+        buttonText="Upgrade to Pro ECN"
+        onButtonClick={() => window.open("/pro-ecn", "_blank")}
+      />
 
       <FaqSection title="Frequently Asked Questions" faqs={faqs} />
     </>
