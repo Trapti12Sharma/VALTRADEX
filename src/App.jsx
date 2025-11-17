@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import WhatsappChatButton from "./components/common/WhatsappChatButton";
+import LiveChat from "./components/common/LiveChat";
 
 // Pages
 import Home from "./components/pages/Home";
@@ -121,6 +122,7 @@ function App() {
 
       {/* Footer */}
       <Footer />
+      <LiveChat />
       <WhatsappChatButton />
     </div>
   );
