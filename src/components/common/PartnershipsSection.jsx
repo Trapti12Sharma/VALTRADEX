@@ -4,11 +4,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import partnership1 from "../../assets/homepage11.png"; // first slide image
-import partnership2 from "../../assets/homepage12.png"; // second slide image
-
-const PartnershipsSection = () => {
-  const settings = {
+const PartnershipsSection = ({
+  title = "Our Partnerships",
+  highlight = ".", // blue highlighted part
+  subheading = "",
+  paragraph = "",
+  images = [],
+  settings = {},
+}) => {
+  // Default slider settings (can be overridden)
+  const defaultSettings = {
     dots: true,
     infinite: true,
     speed: 800,
@@ -20,6 +25,8 @@ const PartnershipsSection = () => {
     arrows: false,
   };
 
+  const finalSettings = { ...defaultSettings, ...settings };
+
   return (
     <section className="relative bg-white text-black py-20 md:py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 text-center">
@@ -29,12 +36,39 @@ const PartnershipsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-extrabold mb-12"
+          className="text-3xl md:text-5xl font-extrabold mb-6"
         >
-          Our partnerships<span className="text-[#00CFFF]">.</span>
+          {title}
+          <span className="text-[#00CFFF]">{highlight}</span>
         </motion.h2>
 
-        {/* Double Slider */}
+        {/* Subheading */}
+        {subheading && (
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-lg md:text-xl text-gray-700 mb-4"
+          >
+            {subheading}
+          </motion.h3>
+        )}
+
+        {/* Paragraph */}
+        {paragraph && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            viewport={{ once: true }}
+            className="text-gray-600 max-w-3xl mx-auto mb-10 md:mb-12 text-sm md:text-lg leading-relaxed"
+          >
+            {paragraph}
+          </motion.p>
+        )}
+
+        {/* Image Slider */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,21 +76,16 @@ const PartnershipsSection = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl"
         >
-          <Slider {...settings}>
-            <div>
-              <img
-                src={partnership1}
-                alt="Portugal Football Federation Partnership"
-                className="w-full rounded-2xl object-cover"
-              />
-            </div>
-            <div>
-              <img
-                src={partnership2}
-                alt="Valtradex Global Sponsorship"
-                className="w-full rounded-2xl object-cover"
-              />
-            </div>
+          <Slider {...finalSettings}>
+            {images.map((img, index) => (
+              <div key={index}>
+                <img
+                  src={img.src}
+                  alt={img.alt || "Partnership Image"}
+                  className="w-full rounded-2xl object-cover"
+                />
+              </div>
+            ))}
           </Slider>
         </motion.div>
       </div>

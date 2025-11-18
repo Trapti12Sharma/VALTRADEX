@@ -1,18 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Import your downloaded images
-import card1 from "../../assets/homepage7.png";
-import card2 from "../../assets/homepage8.png";
-import card3 from "../../assets/homepage9.png";
-
-import award1 from "../../assets/award1.svg";
-import award2 from "../../assets/award2.svg";
-import award3 from "../../assets/award3.svg";
-import award4 from "../../assets/award4.svg";
-import award5 from "../../assets/award5.svg";
-import award6 from "../../assets/award6.svg";
-
 const fadeUp = {
   hidden: { y: 80, opacity: 0 },
   visible: (delay = 0) => ({
@@ -31,7 +19,12 @@ const slideRight = {
   }),
 };
 
-const WhyTradersChooseUs = () => {
+const WhyTradersChooseUs = ({
+  title = "Why traders choose us",
+  highlight = ".",
+  cards = [],
+  awards = [],
+}) => {
   return (
     <section className="bg-black text-white py-20 md:py-32 overflow-hidden relative">
       {/* ===== Title ===== */}
@@ -42,61 +35,49 @@ const WhyTradersChooseUs = () => {
         viewport={{ once: true }}
         className="text-center text-3xl md:text-5xl font-extrabold mb-16"
       >
-        Why traders choose us
-        <span className="text-[#00CFFF]">.</span>
+        {title}
+        <span className="text-[#00CFFF]">{highlight}</span>
       </motion.h2>
 
-      {/* ===== Card Section ===== */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
-        <motion.div
-          variants={fadeUp}
-          custom={0.1}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="w-full flex justify-center"
-        >
-          <img
-            src={card1}
-            alt="Your key to staying ahead"
-            className="w-full max-w-[380px] object-contain hover:scale-105 transition-transform duration-500"
-          />
-        </motion.div>
+      {/* ===== Dynamic Cards Section (Image + Text) ===== */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 place-items-center">
+        {cards.map((card, i) => (
+          <motion.div
+            key={i}
+            variants={fadeUp}
+            custom={0.15 * (i + 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="w-full text-center flex flex-col items-center"
+          >
+            {/* Image */}
+            <img
+              src={card.image}
+              alt={card.alt}
+              className="w-full max-w-[380px] object-contain hover:scale-105 transition-transform duration-500"
+            />
 
-        <motion.div
-          variants={fadeUp}
-          custom={0.3}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="w-full flex justify-center"
-        >
-          <img
-            src={card2}
-            alt="Support whenever wherever"
-            className="w-full max-w-[380px] object-contain hover:scale-105 transition-transform duration-500"
-          />
-        </motion.div>
+            {/* Title */}
+            {card.title && (
+              <h3 className="mt-6 text-lg md:text-xl font-semibold text-white">
+                {card.title}
+              </h3>
+            )}
 
-        <motion.div
-          variants={fadeUp}
-          custom={0.5}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="w-full flex justify-center"
-        >
-          <img
-            src={card3}
-            alt="Your capital is protected"
-            className="w-full max-w-[380px] object-contain hover:scale-105 transition-transform duration-500"
-          />
-        </motion.div>
+            {/* Description */}
+            {card.description && (
+              <p className="mt-3 text-gray-400 text-sm md:text-base leading-relaxed max-w-[350px]">
+                {card.description}
+              </p>
+            )}
+          </motion.div>
+        ))}
       </div>
 
-      {/* ===== Awards Section ===== */}
+      {/* ===== Dynamic Awards Section ===== */}
       <div className="max-w-7xl mx-auto px-6 mt-20 flex flex-wrap justify-center items-center gap-10">
-        {[award1, award2, award3, award4, award5, award6].map((award, i) => (
+        {awards.map((award, i) => (
           <motion.div
             key={i}
             variants={slideRight}
