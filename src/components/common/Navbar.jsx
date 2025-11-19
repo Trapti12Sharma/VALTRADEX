@@ -334,7 +334,9 @@ const Navbar = () => {
           <img
             src={logo}
             alt="VALTRADEX"
-            className="w-[70px] sm:w-[75px] md:w-[80px] h-auto object-contain bg-transparent"
+            className={`w-[70px] sm:w-[75px] md:w-[80px] h-auto object-contain !bg-transparent transition-all duration-300
+    ${scrolled ? "brightness-200" : "brightness-100"}
+  `}
           />
         </Link>
 
