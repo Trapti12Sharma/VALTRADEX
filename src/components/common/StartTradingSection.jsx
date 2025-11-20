@@ -38,10 +38,12 @@ const StartTradingSection = ({
         viewport={{ once: true }}
         className="relative z-10 text-center md:text-left max-w-4xl px-6 md:px-12"
       >
-        {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
+        {/* Heading (SMALLER NOW) */}
+        <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-6">
           {title} <br />
-          <span className="text-[#00CFFF]">{highlight}</span>
+          <span className="text-[#00CFFF] text-xl md:text-4xl">
+            {highlight}
+          </span>
         </h2>
 
         {/* Dynamic Description */}

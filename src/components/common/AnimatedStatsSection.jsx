@@ -43,12 +43,16 @@ const AnimatedStatsSection = ({
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="w-full md:w-1/2 text-center md:text-left space-y-4 sm:space-y-5 px-4 sm:px-6 md:px-8 lg:px-10"
+          className="w-full md:w-1/2 text-center md:text-left space-y-4 sm:space-y-5 px-4 sm:px-6 md:px-0"
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold leading-snug tracking-tight">
             {title}
           </h2>
-          <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+
+          <p
+            className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed 
+  max-w-[600px] md:max-w-[650px] lg:max-w-[700px] text-justify"
+          >
             {description}
           </p>
         </motion.div>

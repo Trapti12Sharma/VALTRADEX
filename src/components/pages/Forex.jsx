@@ -21,129 +21,134 @@ const Forex = () => {
   const articles = [
     {
       image: article1,
-      category1: "AUD",
-      category2: "Forex",
-      title: "Aussie Gains as Shutdown Nears Resolution",
-      readTime: "8 mins",
-      date: "Nov 11, 2025",
-      daysAgo: "2 days ago",
+      category1: "Trade 40+ FX Pairs",
+      // category2: "",
+      title:
+        "Discover the majors, minors, and exotics through a dependable forex trading platform that is not only fast but also stable.",
+      // readTime: "8 mins",
+      // date: "Nov 11, 2025",
+      // daysAgo: "2 days ago",
     },
     {
       image: article2,
-      category1: "Forex",
-      category2: "Yen",
-      title: "Yen Slides as Stimulus Bets Grow",
-      readTime: "8 mins",
-      date: "Nov 10, 2025",
-      daysAgo: "3 days ago",
+      category1: "Leverage Up to 500:1",
+      // category2: "Yen",
+      title:
+        "Use your trading power with the help of flexible leverage which is also quite suitable for a professional trader to a beginner.",
+      // readTime: "8 mins",
+      // date: "Nov 10, 2025",
+      // daysAgo: "3 days ago",
     },
     {
       image: article3,
-      category1: "Euro",
-      category2: "Forex",
-      title: "Euro Holds Near $1.16 as Traders Await Key Data",
-      readTime: "8 mins",
-      date: "Oct 23, 2025",
-      daysAgo: "3 weeks ago",
+      category1: "Spreads From 0.0",
+      // category2: "Forex",
+      title:
+        "Assist yourself by extremely tight spreads, in that way, you will be able to realize opportunities with exactness.",
+      // readTime: "8 mins",
+      // date: "Oct 23, 2025",
+      // daysAgo: "3 weeks ago",
     },
   ];
 
   const features = [
     {
       icon: <LuDollarSign />,
-      title: "Zero to Low Commissions",
-      description: "Keep more of what you earn with spreads starting from 0.0.",
+      title: "1. Effortless Trading",
+      description:
+        "The Expert Advisors on MetaTrader 4 and MetaTrader 5 facilitate a quick installation and automatically carry out the strategy. Traders are allowed by this automation to do their operations 24 hours a day, 7 days a week, with a minimum of intervention thus it is an easy way to implement the best forex trading platform for beginners that is still suitable for professionals.",
     },
     {
       icon: <BsGrid3X3Gap />,
-      title: "Over 1,000+ Ways to Trade",
+      title: "2. Always One Step Ahead",
       description:
-        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+        "Prepare yourself for market changes through the use of state-of-the-art charting tools, quick execution, and up-to-the-minute market insights. These instruments assist you in foreseeing market movement, pinpointing the starting of new trends, and thus positioning yourself for the most optimal setups which are in complete harmony with advanced trading techniques.",
     },
     {
       icon: <Layers />,
-      title: "Accounts That Fit Your Style",
+      title: "3. Zero to Low Commissions",
       description:
-        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+        "Our extremely competitive pricing plan is such that you will be able to retain more of your earnings. Traders with a high volume of operations will find that they may execute their strategies at zero cost while still receiving long-term investment opportunities since the spread starts from 0.0.",
     },
     {
       icon: <BsGrid3X3Gap />,
-      title: "Over 1,000+ Ways to Trade",
+      title: "4. Over 1,000+ Ways to Trade",
       description:
-        "Trade your way. Dive into forex, stocks, commodities, ETFs, and more.",
+        "The Online Forex Trading Platform we offer has the capability to trade the following assets: forex, indices, metals, commodities, stocks, futures, and ETFs. The broad choice of these assets gives traders the power to not only diversify but also to protect their holdings (hedge) and modify (adapt) their strategies in numerous markets.",
     },
     {
       icon: <Layers />,
-      title: "Accounts That Fit Your Style",
+      title: "5. Accounts That Fit Your Style",
       description:
-        "Choose an account tailored to your goals, experience, and trading preferences—because one size doesn’t fit all.",
+        "The types of accounts that we provide through our platform are tailored to meet the requirements of you whether you are a novice who is merely testing the waters or an expert who is perfecting the system. The trading environment that suits every style will be ensured by features such as clear pricing, adjustable leverage, and different execution models‌ .",
     },
   ];
 
   const faqs = [
     {
-      question: "Is copy trading profitable?",
-      answer:
-        "It can be profitable depending on the trader you follow and the strategy used, but risks are always involved.",
-    },
-    {
-      question: "How does copy trading work?",
-      answer:
-        "You select experienced traders, allocate funds to automatically replicate their trades in real time.",
-    },
-    {
-      question: "How do I choose a trader to copy?",
-      answer:
-        "Check performance stats, risk levels, and consistency before deciding who to follow.",
-    },
-    {
       question:
-        "How can I increase my chances of making a profit in copy trading?",
+        "1.​‍​‌‍​‍‌​‍​‌‍​‍‌ What features make Valtradex the Best Forex Trading Platform?",
       answer:
-        "Diversify by following multiple traders and use stop-loss tools to manage risk.",
+        "Valtradex brings to the table quick execution, low spreads (starting from 0.0), sophisticated charting tools, and MT4/MT5 compatibility—thus, it is a facility of equally both beginners and professional traders.",
     },
     {
-      question: "How do market conditions affect copy trading profitability?",
+      question: "2. Is forex trading good for new traders?",
       answer:
-        "Volatile markets can lead to higher gains or losses; ensure your trader adapts to conditions.",
+        "Definitely. The presence of educational resources, demo accounts, and user-friendly platforms make it possible for beginners to start trading safely and learn at their own pace.",
     },
     {
-      question: "Is copy trading legal?",
+      question: "3. What are the trading platforms available at Valtradex?",
       answer:
-        "Yes. It’s legal in most jurisdictions when done through regulated brokers.",
+        "There are four platforms through which you can execute your trades: MetaTrader 4, MetaTrader 5, Web Trader as well as TradingView. Each one aims at providing you with a smooth online forex trading experience.",
     },
     {
-      question: "What are the risks associated with copy trading?",
+      question: "4. What leverage level is allowed for me in forex trading?",
       answer:
-        "All trading carries risk. You can lose money if the traders you follow perform poorly.",
+        "Valtradex grants up to 500:1 flexible leverage which is a trader's ability to use a small amount of capital to control a much larger position.",
     },
     {
-      question: "Can I copy multiple traders simultaneously?",
+      question: "5. Is there any commission or hidden charges?",
       answer:
-        "Yes, you can diversify by allocating different portions of your balance to multiple traders.",
+        "Absolutely no hidden fees! Our brokerage model is characterized by zero to low commission charges along with very competitive spreads.",
     },
     {
-      question: "How many payment cycles are there?",
+      question: "6. Besides forex, can I trade in other markets?",
       answer:
-        "Payment cycles depend on your broker—usually weekly, bi-weekly, or monthly.",
+        "Definitely. Valtradex equips you with the access of over 1,000+ instruments such as commodities, indices, CFDs, shares, ETFs, bonds, and a lot more.",
+    },
+    {
+      question: "7. How much money do I need to open an account?",
+      answer:
+        "With a small initial deposit, you can carry on with your first steps of trading regardless if you are just testing the forex market.",
+    },
+    {
+      question: "8. Is Valtradex a trustworthy platform for forex trading?",
+      answer:
+        "Indeed. Valtradex supports the above claim by securing dealings, having reputable liquidity partners, and creating a steady trading environment for long-term ​‍​‌‍​‍‌​‍​‌‍​‍‌success.",
     },
   ];
+
+  const startDescription = `The​‍​‌‍​‍‌​‍​‌‍​‍‌ world financial system is a very fast mover and every change is bringing new opportunities for the traders who are ready. Being one of the Top Forex Trading Platforms Valtradex provides you with the means to use the most advanced instruments and achieve the most accurate execution so as to understand market movement and be the first to react. Forex market is still the core of global finance and with the right platform, small changes can be converted into your strategic ​‍​‌‍​‍‌​‍​‌‍​‍‌moves.
+`;
+
+  const backgroundVideoUrl =
+    "https://d3a7kndgi8x4pg.cloudfront.net/vt/video/page_steps_video2.mp4";
 
   return (
     <>
       {/*  Top Hero Section */}
       <VideoBanner
         videoMp4={marketsBannerVideo}
-        title="MONEY IN"
-        highlight="MOTION"
-        description="Where price speculation meets limitless potential."
+        title="Markets Move Nonstop,Creating "
+        highlight="Opportunity"
+        description="Where constant shifts unlock new trading potential."
         buttonText="Start Trading Forex"
         onButtonClick={() => window.open("/trading-journey", "_blank")}
       />
 
       <AnimatedStatsSection
-        title="Stake Your Claim"
-        description="With a daily turnover of $7.5 trillion, the sheer size of the forex market impacts all tradable markets, including futures, bonds, and stocks."
+        title="Start forex  trading with Valtradex today."
+        description="Step into the largest financial market on earth with tools that are not only clear but also fast and intelligent in ​‍​‌‍​‍‌​‍​‌‍​‍‌decision-making.MetaTrader​‍​‌‍​‍‌​‍​‌‍​‍‌ 4 and MetaTrader 5, which are among the most robust platforms in the industry, form the base of our infrastructure. These platforms allow the use of Expert Advisors, intelligent indicators, sophisticated charting, as well as extensive backtesting. If you are creating your own strategy or simply taking advantage of the top forex trading solutions, MT4 and MT5 provide an incomparable range of possibilities for manual and algorithmic ​‍​‌‍​‍‌​‍​‌‍​‍‌trading."
         image={forexImg}
         stats={[
           { label: "Access forex pairs", value: "40+" },
@@ -153,19 +158,38 @@ const Forex = () => {
       />
 
       <WhiteGradientBanner
-        title="Effortless Trading"
-        description="Built around the MetaTrader 4 and MetaTrader 5 platforms, Expert Advisors are designed for quick and easy setup."
+        title="DISCOVER YOUR TRADING EDGE AND STAY A STEP AHEAD"
+        description="With​‍​‌‍​‍‌​‍​‌‍​‍‌ Valtradex, you can trade forex like an institution and still keep the currency trading strategy you are using at its best. In addition to that, top liquidity will bring lower spreads, quicker fills, and less slippage—very important that type of advantages are for scalpers and algorithmic ​‍​‌‍​‍‌​‍​‌‍​‍‌traders."
         buttonText="Learn More"
         backgroundImage={whitewave}
         onButtonClick={() => window.open("/metatrader-setup", "_blank")}
       />
 
-      <FeatureCardsSection title="Always One Step Ahead" features={features} />
-      <StartTradingSection />
+      <FeatureCardsSection
+        title="ADVANCE YOUR TRADING JOURNEY WITH SMARTER TOOLS"
+        description="We​‍​‌‍​‍‌​‍​‌‍​‍‌ base our system on MetaTrader 4 and MetaTrader 5, two of the most robust platforms in the market. These platforms are in line with Expert Advisors, intelligent indicators, advanced charting, and extensive backtesting. In case you are creating your own strategy or simply employing the top forex trading tools, MT4 and MT5 provide the highest degree of adaptability for technical and algorithmic ​‍​‌‍​‍‌​‍​‌‍​‍‌trading."
+        features={features}
+      />
+
+      <StartTradingSection
+        title="MARKETS MOVE NONSTOP, CREATING NEW TRADING CHANCES"
+        highlight="Where constant market shifts unlock unlimited potential through top forex trading brokers and fast-execution online trading platforms."
+        description={startDescription}
+        videoUrl={backgroundVideoUrl}
+        steps={[
+          { num: "1", label: "Register" },
+          { num: "2", label: "Deposit" },
+          { num: "3", label: "Trade" },
+        ]}
+        buttonText="Trade Now"
+        demoText="Try Demo"
+        onButtonClick={() => window.open("/trading-journey", "_blank")}
+        onDemoClick={() => window.open("/demo-account", "_blank")}
+      />
 
       <FaqSection title="Frequently Asked Questions" faqs={faqs} />
       <RelatedArticlesSection
-        title="Related Articles"
+        title="Related ArticlesUNLOCK FULL ACCESS TO THE GLOBAL FOREX MARKET TODAY"
         buttonText="Learn more"
         onButtonClick={() => window.open("/blog", "_blank")}
         articles={articles}
